@@ -1,5 +1,5 @@
 # conda
-name: venvOsee
+name: venvFinRisk
 channels:
   - conda-forge
   - defaults
@@ -9,10 +9,11 @@ dependencies:
   - pip:
     - pip-tools
     - ipynb==0.5.1
-  - pandas=1.2.2
-  - numpy==1.19.2
+    - pandas
+    - numpy
+    - orjson
+    - mxnet~=1.7 #maxima version compatible con windows. la version de request debe ser maximo 2.19.0 y yfinace debe tener 0.20.0 como minimo.
+    - gluonts==0.9.4
+    - matplotlib
+    - scipy
   - ipykernel
-  - gdal=3.2.2
-  - fiona=1.8.19
-  - geopandas==0.9.0
-  - nbformat
