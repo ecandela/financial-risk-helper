@@ -37,7 +37,7 @@ class VaRCalculation:
 
     def predict(self, X, w):
         R = X.corr()
-        vc_name = f"vs_{self.alpha}"
+        vc_name = f"vc_{self.alpha}"
         hs_name = f"hs_{self.alpha}"
         mc_name = f"mc_{self.alpha}"
         es_name = f"es_{self.alpha}"
@@ -52,7 +52,7 @@ class VaRCalculation:
             V[i] = np.abs(w[i]) * vc
             
             chld_namee = self.name + "/" +X.columns[i]
-            var_children[chld_namee] = {vc_name:vc}
+            var_children[chld_namee] = {vc_name:-abs(vc)}
 
             #item_label = 'vc_'+X.columns[i]
             #var[item_label] = -abs(vc)
@@ -69,7 +69,7 @@ class VaRCalculation:
                 V[i] = w[i] * hc
             
             chld_namee = self.name + "/" +X.columns[i]
-            var_children[chld_namee][hs_name]= hc
+            var_children[chld_namee][hs_name]= -abs(hc)
             #item_label = 'hc_'+X.columns[i]
             #var[item_label] = -abs(hc)
 
@@ -85,7 +85,7 @@ class VaRCalculation:
                 V[i] = w[i] * mc
 
             chld_namee = self.name + "/" +X.columns[i]
-            var_children[chld_namee][mc_name]= mc
+            var_children[chld_namee][mc_name]= -abs(mc)
             #item_label = 'mc_'+X.columns[i]
             #var[item_label] = -abs(mc)
 
@@ -96,7 +96,7 @@ class VaRCalculation:
             V[i] = np.abs(w[i]) * es
 
             chld_namee = self.name + "/" +X.columns[i]
-            var_children[chld_namee][es_name]= es
+            var_children[chld_namee][es_name]= -abs(es)
             #item_label = 'es_'+X.columns[i]
             #var[item_label] = -abs(es)
 
